@@ -77,7 +77,7 @@ const productList = [
 ];
 
 const listItems = productList.map((product) =>
-  <li key={product.id}>{product.name}, ￥{product.price}</li>
+  <li key={product.id} style={{ textAlign: 'left' }}>{product.name}, ￥{product.price}</li>
 );
 
 function ProductList() {
