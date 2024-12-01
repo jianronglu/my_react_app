@@ -3,13 +3,13 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App" style={{ backgroundColor: 'red' ,color: 'white'}}>
+    <div className="App" style={{ backgroundColor: 'red', color: 'white' }}>
       <header className="App-header">
-      <Welcome />
-      <MyButton title="我是一个按钮" />
-      <MyButtonDisabled title="我是一个被禁用的按钮" disabled={true} />
-      <MyImg avatarUrl='https://avatars.githubusercontent.com/u/10347539?v=4' name='logo' width={100} height={100} />
-      <AboutPage />
+        <Welcome />
+        <MyButton title="我是一个按钮" />
+        <MyButtonDisabled title="我是一个被禁用的按钮" disabled={true} />
+        <MyImg avatarUrl='https://avatars.githubusercontent.com/u/10347539?v=4' name='logo' width={100} height={100} />
+        <AboutPage />
       </header>
     </div>
   );
@@ -43,8 +43,8 @@ interface MyImgProps {
   height?: number;
 }
 
-function MyImg({ avatarUrl , name, width, height}: MyImgProps){
-  return <img className="avatar" alt={name} src={avatarUrl} style={{width, height}}/>
+function MyImg({ avatarUrl, name, width, height }: MyImgProps) {
+  return <img className="avatar" alt={name} src={avatarUrl} style={{ width, height }} />
 }
 
 function AboutPage() {//空标签-使用Fragment包裹-减少标签层级
