@@ -71,13 +71,18 @@ function LoginView() {
 }
 
 const productList = [
-  { id: 1, name: 'Cabbage', price: 100 },
-  { id: 2, name: 'Garlic', price: 200 },
-  { id: 3, name: 'Apple', price: 300 },
+  { id: 1, name: 'Cabbage', price: 100, isFruit: false },
+  { id: 2, name: 'Garlic', price: 200, isFruit: false },
+  { id: 3, name: 'Apple', price: 300, isFruit: true },
 ];
 
 const listItems = productList.map((product) =>
-  <li key={product.id} style={{ textAlign: 'left' }}>{product.name}, ￥{product.price}</li>
+  <li key={product.id}
+    style={{
+      textAlign: 'left',
+      color: product.isFruit ? 'magenta' : 'darkgreen'
+    }}>{product.name}, ￥{product.price}
+  </li>
 );
 
 function ProductList() {
