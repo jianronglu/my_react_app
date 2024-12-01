@@ -11,6 +11,7 @@ function App() {
         <MyButtonDisabled title="我是一个被禁用的按钮" disabled={true} />
         <MyImg avatarUrl='https://avatars.githubusercontent.com/u/10347539?v=4' name='logo' width={100} height={100} />
         <AboutPage />
+        <ProductList />
       </header>
     </div>
   );
@@ -51,8 +52,8 @@ function MyImg({ avatarUrl, name, width, height }: MyImgProps) {
 function AboutPage() {//空标签-使用Fragment包裹-减少标签层级
   return (
     <>
-      <h1>About Page</h1>
-      <p>This is the about page.</p>
+      <h1 style={{ textAlign: 'left' }}>About Page</h1>
+      <p style={{ textAlign: 'left' }}> Hello there.<br /> How do you do?</p>
     </>
   );
 }
@@ -69,4 +70,19 @@ function LoginView() {
   );
 }
 
+const productList = [
+  { id: 1, name: 'Cabbage', price: 100 },
+  { id: 2, name: 'Garlic', price: 200 },
+  { id: 3, name: 'Apple', price: 300 },
+];
+
+const listItems = productList.map((product) =>
+  <li key={product.id}>{product.name}, ￥{product.price}</li>
+);
+
+function ProductList() {
+  return (
+    <ul> {listItems} </ul>
+  );
+}
 export default App;
