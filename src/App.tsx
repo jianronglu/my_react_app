@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
   return (
-    <div className="App" style={{ backgroundColor: 'red', color: 'white' }}>
+    <div className="App">
       <header className="App-header">
+        <LoginView />
         <Welcome />
         <MyButton title="我是一个按钮" />
         <MyButtonDisabled title="我是一个被禁用的按钮" disabled={true} />
@@ -56,7 +57,16 @@ function AboutPage() {//空标签-使用Fragment包裹-减少标签层级
   );
 }
 
+function LoginView() {
+  const [isLogin, setIsLogin] = useState(true);
 
-
+  return (
+    <div>
+      <h1>Login hook </h1>
+      {isLogin ? <p>已登录</p> : <p>未登录</p>}
+      <button onClick={() => setIsLogin(!isLogin)}>切换登录状态</button>
+    </div>
+  );
+}
 
 export default App;
