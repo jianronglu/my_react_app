@@ -1,74 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
+import ShoppingList, { ShoppingList2 } from './components/ShoppingList.tsx';
 import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <LoginView />
-        <Welcome />
-        <MyButton title="我是一个按钮" />
-        <MyButtonDisabled title="我是一个被禁用的按钮" disabled={true} />
-        <MyImg avatarUrl='https://avatars.githubusercontent.com/u/10347539?v=4' name='logo' width={100} height={100} />
-        <AboutPage />
-        <ProductList />
-      </header>
-    </div>
-  );
-}
-
-function Welcome() {
-  return <h1>Hello World !</h1>;
-}
-
-function MyButton({ title }: { title: string }) {
-  return (
-    <button>{title}</button>
-  );
-}
-
-interface MyButtonProps {
-  title: string;
-  disabled?: boolean;
-}
-
-function MyButtonDisabled({ title, disabled }: MyButtonProps) {
-  return (
-    <button disabled={disabled}>{title}</button>
-  );
-}
-
-interface MyImgProps {
-  avatarUrl: string;
-  name: string;
-  width?: number;
-  height?: number;
-}
-
-function MyImg({ avatarUrl, name, width, height }: MyImgProps) {
-  return <img className="avatar" alt={name} src={avatarUrl} style={{ width, height }} />
-}
-
-function AboutPage() {//空标签-使用Fragment包裹-减少标签层级
-  return (
-    <>
-      <h1 style={{ textAlign: 'left' }}>About Page</h1>
-      <p style={{ textAlign: 'left' }}> Hello there.<br /> How do you do?</p>
-    </>
-  );
-}
-
-function LoginView() {
-  const [isLogin, setIsLogin] = useState(true);
-
-  return (
-    <div>
-      <h1>Login hook </h1>
-      {isLogin ? <p>已登录</p> : <p>未登录</p>}
-      <button onClick={() => setIsLogin(!isLogin)}>切换登录状态</button>
-    </div>
-  );
-}
 
 const productList = [
   { id: 1, name: 'Cabbage', price: 100, isFruit: false },
@@ -76,18 +8,15 @@ const productList = [
   { id: 3, name: 'Apple', price: 300, isFruit: true },
 ];
 
-const listItems = productList.map((product) =>
-  <li key={product.id}
-    style={{
-      textAlign: 'left',
-      color: product.isFruit ? 'magenta' : 'darkgreen'
-    }}>{product.name}, ￥{product.price}
-  </li>
-);
-
-function ProductList() {
+function App() {
   return (
-    <ul> {listItems} </ul>
+    <div className='App'>
+      <h1 className='list-title'>产品列表</h1>
+      <ShoppingList products={productList} />
+      <h1 className='list-title'>产品列表箭头函数</h1>
+      <ShoppingList2 products={productList} />
+    </div >
   );
 }
+
 export default App;

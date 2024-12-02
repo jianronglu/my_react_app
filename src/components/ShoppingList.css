@@ -1,0 +1,21 @@
+.shopping-item {
+    color: darkgreen;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+    height: 44px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+}
+
+.shopping-item:last-child {
+    border-bottom: 1px solid #ffffff;
+}
+
+.shopping-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
