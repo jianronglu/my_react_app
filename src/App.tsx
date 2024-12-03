@@ -1,6 +1,7 @@
 import React from 'react';
 import ShoppingList, { ShoppingList2 } from './components/ShoppingList.tsx';
 import './App.css';
+import { useTitle , useMouse, useWindowSize} from './use/useHooks.ts';
 
 const productList = [
   { id: 1, name: 'Cabbage', price: 100, isFruit: false },
@@ -9,6 +10,13 @@ const productList = [
 ];
 
 function App() {
+  useTitle('产品列表')
+  // const { width, height } = useWindowSize();
+  // console.log(width, height);
+
+  const position = useMouse();
+  console.log(position.x, position.y);
+
   return (
     <div className='App'>
       <h1 className='list-title'>产品列表</h1>
