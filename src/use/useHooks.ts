@@ -40,6 +40,7 @@ export const useWindowSize = () => {
 
   return { width, height };
 };
+
 export const useLocalStorage = (key: string, initialValue: any) => {
   const [value, setValue] = useState(() => {
     try {
