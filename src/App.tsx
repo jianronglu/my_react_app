@@ -1,7 +1,7 @@
 import React from 'react';
 import ShoppingList, { ShoppingList2 } from './components/ShoppingList.tsx';
 import './App.css';
-import { useTitle , useMouse, useWindowSize} from './use/useHooks.ts';
+import { useTitle , useMouse, /*useWindowSize,*/ useGetInfo} from './use/useHooks.ts';
 
 const productList = [
   { id: 1, name: 'Cabbage', price: 100, isFruit: false },
@@ -14,6 +14,8 @@ function App() {
   // const { width, height } = useWindowSize();
   // console.log(width, height);
 
+
+  const { loading, info } = useGetInfo();
   const position = useMouse();
   console.log(position.x, position.y);
 
@@ -23,6 +25,7 @@ function App() {
       <ShoppingList products={productList} />
       <h1 className='list-title'>产品列表箭头函数</h1>
       <ShoppingList2 products={productList} />
+      <div>{loading ? '加载中...' : info}</div>
     </div >
   );
 }

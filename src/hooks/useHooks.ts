@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 
 export const useTitle = (title: string) => {
@@ -70,4 +69,52 @@ export const useLocalStorage = (key: string, initialValue: any) => {
   }, [key, value]);
 
   return [value, setValue];
+};
+
+function getInfo(): Promise<string> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(Date.now().toString());
+    }, 1500);
+  });
+}
+
+type InfoState = {
+  loading: boolean;
+  info: string;
+  error?: Error;
+}
+
+export const useGetInfo = () => {
+  const [state, setState] = useState<InfoState>({
+    loading: true,
+    info: '',
+  });
+
+  useEffect(() => {
+    let isMounted = true;
+
+    getInfo().then((info) => {
+      if (isMounted) {
+        setState({
+          loading: false,
+          info,
+        });
+      }
+    }).catch((error) => {
+      if (isMounted) {
+        setState((prev) => ({
+          ...prev,
+          loading: false,
+          error,
+        }));
+      }
+    });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  return state;
 };
