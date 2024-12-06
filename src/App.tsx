@@ -1,7 +1,7 @@
 import React from 'react';
-import ShoppingList, { ShoppingList2 } from './components/ShoppingList.tsx';
+import ShoppingList, { ShoppingList2 } from './components/Shopping/ShoppingList.tsx';
 import './App.css';
-import { useTitle , useMouse, /*useWindowSize,*/ useGetInfo} from './use/useHooks.ts';
+import { useTitle , useMouse, /*useWindowSize,*/ useGetInfo} from './hooks/Hooks.ts';
 
 const productList = [
   { id: 1, name: 'Cabbage', price: 100, isFruit: false },
